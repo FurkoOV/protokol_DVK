@@ -657,7 +657,6 @@
         if (typeof old_data.common != "undefined") data.common = JSON.parse(old_data.common);
 
 
-        //dsafasdf
 
         for (let i in electionsOrder) {
             if (typeof old_data[electionsOrder[i]] != "undefined") {
