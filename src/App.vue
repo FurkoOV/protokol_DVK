@@ -656,6 +656,9 @@
         if (typeof old_data.electionTypes != "undefined") data.electionTypes = JSON.parse(old_data.electionTypes);
         if (typeof old_data.common != "undefined") data.common = JSON.parse(old_data.common);
 
+
+        //dsafasdf
+
         for (let i in electionsOrder) {
             if (typeof old_data[electionsOrder[i]] != "undefined") {
                 data[electionsOrder[i]].dynamic_fields.candidates = JSON.parse(old_data[electionsOrder[i]]);
