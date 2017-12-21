@@ -494,22 +494,6 @@
     };
 
 
-    var init_common = {
-        election_date: {value: ""},
-        dvk_num: {value: ""},
-        members_num: {value: ""},
-        parl_ovk_num: {value: ""},
-        local_region_tvk_num: {value: ""},
-        local_city_tvk_num: {value: ""},
-        local_district_tvk_num: {value: ""},
-        local_village_tvk_num: {value: ""},
-        urns: [{type: "Стаціонарна скринька", number: ""},
-            {type: "Стаціонарна скринька", number: ""},
-            {type: "Переносна скринька", number: ""},
-            {type: "Переносна скринька", number: ""}
-        ]
-    };
-
 
     export default {
         name: 'app',
