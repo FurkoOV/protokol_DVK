@@ -5,7 +5,7 @@
                 <span class="mdl-layout-title">Перевірка протоколу</span>
                 <div class="mdl-layout-spacer"></div>
                 <a class="mdl-button" href="javascript:window.close()"><i class="material-icons">input</i> Вихід</a>
-
+                z
             </div>
         </header>
         <div class="my-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
@@ -49,7 +49,13 @@
 
                     <div class="page-content">
 
-                        <div class="mdl-layout-title">Налаштування даних ДВК</div>
+                        <div class="mdl-layout-title">Налаштування даних ДВК
+                            <button v-show="common.election_date.value" @click="remove_alldata"
+                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                                    style="float: right">Очистити усі дані
+                            </button>
+                        </div>
+                        <br>
                         <hr>
                         <small style="position:relative; top:-15px;">* Для переходу до наступного поля даних
                             користуйтесь мишкою або клавішою Tab
@@ -110,89 +116,90 @@
                                         мажоритарною
                                         системою відносної більшості в одномандатних виборчих округах</label>
                                     <br/>
-                                    <br/>
-                                    <input type="checkbox" id="check_local_region" value="local_region"
-                                           v-model="electionTypes">
-                                    <label for="check_local_region">Вибори депутатів обласної ради (ВР АР
-                                        Крим)</label><br/>
+                                    <!--                                    <br/>
+                                                                        <input type="checkbox" id="check_local_region" value="local_region"
+                                                                               v-model="electionTypes">
+                                                                        <label for="check_local_region">Вибори депутатів обласної ради (ВР АР
+                                                                            Крим)</label><br/>
 
-                                    <div style="padding-left:30px;" v-show="elect('local_region')">
-                                        <input type="radio" id="local_oblast"
-                                               value="Верховної Ради Автономної Республіки Крим"
-                                               v-model="local_region.type">
-                                        <label for="local_oblast">Верховної Ради Автономної Республіки
-                                            Крим</label>
-                                        <br/>
-                                        <input type="radio" id="local_ark" value="обласної ради"
-                                               v-model="local_region.type">
-                                        <label for="local_ark">обласної ради</label>
-                                        <br/>
-                                    </div>
+                                                                        <div style="padding-left:30px;" v-show="elect('local_region')">
+                                                                            <input type="radio" id="local_oblast"
+                                                                                   value="Верховної Ради Автономної Республіки Крим"
+                                                                                   v-model="local_region.type">
+                                                                            <label for="local_oblast">Верховної Ради Автономної Республіки
+                                                                                Крим</label>
+                                                                            <br/>
+                                                                            <input type="radio" id="local_ark" value="обласної ради"
+                                                                                   v-model="local_region.type">
+                                                                            <label for="local_ark">обласної ради</label>
+                                                                            <br/>
+                                                                        </div>
 
-                                    <input type="checkbox" id="check_local_district" value="local_district"
-                                           v-model="electionTypes">
-                                    <label for="check_local_district">Вибори депутатів районної (районної в
-                                        місті)
-                                        ради</label><br/>
+                                                                        <input type="checkbox" id="check_local_district" value="local_district"
+                                                                               v-model="electionTypes">
+                                                                        <label for="check_local_district">Вибори депутатів районної (районної в
+                                                                            місті)
+                                                                            ради</label><br/>
 
-                                    <div style="padding-left:30px;" v-show="elect('local_district')">
-                                        <input type="radio" id="local_single_district" value="районної ради"
-                                               v-model="local_district.type">
-                                        <label for="local_single_district">районної ради</label>
-                                        <br/>
-                                        <input type="radio" id="local_district_in_city"
-                                               value="районної в місті ради"
-                                               v-model="local_district.type">
-                                        <label for="local_district_in_city">районної в місті ради</label>
-                                        <br/>
-                                    </div>
+                                                                        <div style="padding-left:30px;" v-show="elect('local_district')">
+                                                                            <input type="radio" id="local_single_district" value="районної ради"
+                                                                                   v-model="local_district.type">
+                                                                            <label for="local_single_district">районної ради</label>
+                                                                            <br/>
+                                                                            <input type="radio" id="local_district_in_city"
+                                                                                   value="районної в місті ради"
+                                                                                   v-model="local_district.type">
+                                                                            <label for="local_district_in_city">районної в місті ради</label>
+                                                                            <br/>
+                                                                        </div>
 
-                                    <input type="checkbox" id="check_local_city" value="local_city"
-                                           v-model="electionTypes">
-                                    <label for="check_local_city">Вибори депутатів міської ради</label><br/>
+                                                                        <input type="checkbox" id="check_local_city" value="local_city"
+                                                                               v-model="electionTypes">
+                                                                        <label for="check_local_city">Вибори депутатів міської ради</label><br/>
 
-                                    <input type="checkbox" id="check_local_mayor" value="local_mayor"
-                                           v-model="electionTypes">
-                                    <label for="check_local_mayor">Вибори міського (селищного, сільського)
-                                        голови</label><br/>
+                                                                        <input type="checkbox" id="check_local_mayor" value="local_mayor"
+                                                                               v-model="electionTypes">
+                                                                        <label for="check_local_mayor">Вибори міського (селищного, сільського)
+                                                                            голови</label><br/>
 
-                                    <div style="padding-left:30px;" v-show="elect('local_mayor')">
-                                        <input type="radio" id="mayor_city" value="міського голови"
-                                               v-model="local_mayor.type">
-                                        <label for="mayor_city">міського голови</label>
-                                        <br/>
-                                        <input type="radio" id="mayor_township" value="сільського голови"
-                                               v-model="local_mayor.type">
-                                        <label for="mayor_township">сільського голови</label>
-                                        <br/>
-                                        <input type="radio" id="mayor_village" value="селищного голови"
-                                               v-model="local_mayor.type">
-                                        <label for="mayor_village">селищного голови</label>
-                                        <br/>
-
-                                    </div>
-
-                                    <input type="checkbox" id="check_local_village" value="local_village"
-                                           v-model="electionTypes">
-                                    <label for="check_local_village">Вибори депутатів сільської (селищної)
-                                        ради</label><br/>
-
-                                    <div style="padding-left:30px;" v-show="elect('local_village')">
-                                        <input type="radio" id="village_village" value="сільської ради"
-                                               v-model="local_village.type">
-                                        <label for="village_village">сільської ради</label>
-                                        <br>
-                                        <input type="radio" id="village_township" value="селищної ради"
-                                               v-model="local_village.type">
-                                        <label for="village_township">селищної ради</label>
-                                        <br>
-                                    </div>
-
-                                    <input type="checkbox" id="check_local_elderman" value="local_elderman"
-                                           v-model="electionTypes">
-                                    <label for="check_local_elderman">Вибори старости</label>
+                                                                        <div style="padding-left:30px;" v-show="elect('local_mayor')">
+                                                                            <input type="radio" id="mayor_city" value="міського голови"
+                                                                                   v-model="local_mayor.type">
+                                                                            <label for="mayor_city">міського голови</label>
+                                                                            <br/>
+                                                                            <input type="radio" id="mayor_township" value="сільського голови"
+                                                                                   v-model="local_mayor.type">
+                                                                            <label for="mayor_township">сільського голови</label>
+                                                                            <br/>
+                                                                            <input type="radio" id="mayor_village" value="селищного голови"
+                                                                                   v-model="local_mayor.type">
+                                                                            <label for="mayor_village">селищного голови</label>
+                                                                            <br/>
 
 
+                                                                        </div>
+
+                                                                        <input type="checkbox" id="check_local_village" value="local_village"
+                                                                               v-model="electionTypes">
+                                                                        <label for="check_local_village">Вибори депутатів сільської (селищної)
+                                                                            ради</label><br/>
+
+                                                                        <div style="padding-left:30px;" v-show="elect('local_village')">
+                                                                            <input type="radio" id="village_village" value="сільської ради"
+                                                                                   v-model="local_village.type">
+                                                                            <label for="village_village">сільської ради</label>
+                                                                            <br>
+                                                                            <input type="radio" id="village_township" value="селищної ради"
+                                                                                   v-model="local_village.type">
+                                                                            <label for="village_township">селищної ради</label>
+                                                                            <br>
+                                                                        </div>
+
+                                                                        <input type="checkbox" id="check_local_elderman" value="local_elderman"
+                                                                               v-model="electionTypes">
+                                                                        <label for="check_local_elderman">Вибори старости</label>
+
+                                    -->
                                 </div>
                             </div>
                         </div>
@@ -204,7 +211,7 @@
                                 <div class="mdl-cell--6-col">
 
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ovonum"
-                                         v-if="elect('parl_major') || elect('parl_party')">
+                                         v-show="elect('parl_major') || elect('parl_party')">
                                         <input class="mdl-textfield__input" type="text" id="parl_ovk_num"
                                                v-model="common.parl_ovk_num.value" pattern="^[1-9]|[1-9][0-9]{1,2}$"
                                                maxlength="3">
@@ -214,36 +221,40 @@
                                     </div>
 
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ovonum"
-                                         v-if="elect('local_region')">
+                                         v-show="elect('local_region')">
                                         <input class="mdl-textfield__input" type="text" id="local_region_tvk_num"
-                                               v-model="common.parl_ovk_num.value" pattern="^[1-9]|[1-9][0-9]{1,2}$">
+                                               v-model="common.local_region_tvk_num.value"
+                                               pattern="^[1-9]|[1-9][0-9]{1,2}$">
                                         <label class="mdl-textfield__label" for="local_region_tvk_num">№ виборчого
                                             округу на виборах {{local_region.type}}</label>
                                         <span class="mdl-textfield__error">Невірний формат!</span>
                                     </div>
 
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ovonum"
-                                         v-if="elect('local_district')">
+                                         v-show="elect('local_district')">
                                         <input class="mdl-textfield__input" type="text" id="local_district_tvk_num"
-                                               v-model="common.parl_ovk_num.value" pattern="^[1-9]|[1-9][0-9]{1,2}$">
+                                               v-model="common.local_district_tvk_num.value"
+                                               pattern="^[1-9]|[1-9][0-9]{1,2}$">
                                         <label class="mdl-textfield__label" for="local_district_tvk_num">№ виборчого
                                             округу на виборах {{local_district.type}}</label>
                                         <span class="mdl-textfield__error">Невірний формат!</span>
                                     </div>
 
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ovonum"
-                                         v-if="elect('local_city')">
+                                         v-show="elect('local_city')">
                                         <input class="mdl-textfield__input" type="text" id="local_city_tvk_num"
-                                               v-model="common.parl_ovk_num.value" pattern="^[1-9]|[1-9][0-9]{1,2}$">
+                                               v-model="common.local_city_tvk_num.value"
+                                               pattern="^[1-9]|[1-9][0-9]{1,2}$">
                                         <label class="mdl-textfield__label" for="local_city_tvk_num">№ виборчого округу
                                             на виборах {{local_city.type}}</label>
                                         <span class="mdl-textfield__error">Невірний формат!</span>
                                     </div>
 
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ovonum"
-                                         v-if="elect('local_village')">
+                                         v-show="elect('local_village')">
                                         <input class="mdl-textfield__input" type="text" id="local_village_tvk_num"
-                                               v-model="common.parl_ovk_num.value" pattern="^[1-9]|[1-9][0-9]{1,2}$">
+                                               v-model="common.local_village_tvk_num.value"
+                                               pattern="^[1-9]|[1-9][0-9]{1,2}$">
                                         <label class="mdl-textfield__label" for="local_village_tvk_num">№ виборчого
                                             округу на виборах {{local_village.type}}</label>
                                         <span class="mdl-textfield__error">Невірний формат!</span>
@@ -257,35 +268,30 @@
                              v-show="common.parl_ovk_num.value && (elect('parl_major') || elect('parl_party'))">
 
                             <div class="mdl-layout__title">Налаштування виборчих скриньок ДВК</div>
+                            <hr>
+
                             <div class="mdl-grid">
-                                <div class="mdl-cell--9-col">
+                                <div class="mdl-cell-1-11-col  cellbutbot">
                                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
-                                            style="margin-right: 15px; float: right;"
                                             @click="add_urn('Стаціонарна скринька')">
                                         <i class="material-icons">add_circle_outline</i>
                                         Стаціонарна скринька
                                     </button>
                                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
-                                            @click="add_urn('Переносна скринька')"
-                                            style="margin-right: 15px; float: right;">
+                                            @click="add_urn('Переносна скринька')">
                                         <i class="material-icons">add_circle_outline</i>
                                         Переносна скринька
                                     </button>
                                 </div>
-                            </div>
+                                <div class="mdl-cell--10-col">
 
-                            <hr>
-
-                            <div class="mdl-grid">
-                                <div class="mdl-cell--11-col">
-
-                                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" width="94%">
+                                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" width="100%">
                                         <thead displaySelectAll="false">
                                         <tr>
                                             <th class="mdl-data-table__cell--non-numeric"></th>
                                             <th class="mdl-data-table__cell--non-numeric">Тип скриньки</th>
                                             <th class="mdl-data-table__cell--non-numeric">Номер скриньки</th>
-                                            <th class="mdl-data-table__cell--non-numeric"><span
+                                            <th class="mdl-data-table__cell--non-numeric  center-items"><span
                                                     class="dont-show-mobile">Видалити</span>
                                             </th>
                                         </tr>
@@ -303,7 +309,7 @@
                                                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 
                                             </td>
-                                            <td class="mdl-data-table__cell--non-numeric">
+                                            <td class="mdl-data-table__cell--non-numeric center-items">
                                                 <a class="rem_urn" title="Видалити" @click="rem_urn(index)"><i
                                                         class="material-icons"
                                                         style="color:red;">delete</i></a>
@@ -324,14 +330,29 @@
                             </div>
                         </div>
 
-                        <div id="cand_sett" v-show="electionTypes.length>0">
+                        <br/><br/>
+                        <div id="cand_sett" v-show="electionTypes.length>0 && common.parl_ovk_num.value">
 
                             <div class="mdl-layout-title">Налаштування даних партій/кандидатів</div>
+                            <hr>
 
                             <div v-show="elect('parl_party')" id="part">
-                                Партії
+
+                                <cand-sett :election-type="parl_party" v-on:remove-candidates="removeCandidates">
+                                    <span slot="title">Перелік політичних партій, які висунули виборчі списки кандидатів у депутати від політичних партій у загальнодержавному багатомандатному окрузі з виборів народних депутатів України</span>
+                                    <span slot="table-title">Назва політичної партії</span>
+                                    <span slot="type">партію</span>
+                                </cand-sett>
+                                <br/>
+
+
+                                <br/>
+
+
                             </div>
-                            <div v-show="elect('parl_party')" id="cand">
+
+
+                            <div v-show="elect('parl_major')" id="cand">
                                 Кандидати
                             </div>
 
@@ -344,10 +365,7 @@
                 </div>
 
                 <div id="protokol" class="mdl-layout__content" v-show="component==='prot'">
-                    ічваіфвафіва
-                    {{common.dvk_num.value}}
-
-
+                    protokol_form
                 </div>
 
 
@@ -370,11 +388,13 @@
     import Prot from './components/prot.vue'
     import Law from './components/law.vue'
     import About from './components/about.vue'
+    import CandSett from './components/candSett.vue'
 
 
     var electionsOrder = ['parl_party', 'parl_major', 'local_region',
         'local_district', 'local_city', 'local_mayor',
         'local_village', 'local_elderman'];
+
 
     var old_data = {};
 
@@ -392,9 +412,7 @@
             local_district_tvk_num: {value: ""},
             local_village_tvk_num: {value: ""},
             urns: [{type: "Стаціонарна скринька", number: ""},
-                {type: "Стаціонарна скринька", number: ""},
-                {type: "Переносна скринька", number: ""},
-                {type: "Переносна скринька", number: ""}
+                {type: "Стаціонарна скринька", number: ""}
             ]
         },
         parl_party: {
@@ -476,6 +494,23 @@
     };
 
 
+    var init_common = {
+        election_date: {value: ""},
+        dvk_num: {value: ""},
+        members_num: {value: ""},
+        parl_ovk_num: {value: ""},
+        local_region_tvk_num: {value: ""},
+        local_city_tvk_num: {value: ""},
+        local_district_tvk_num: {value: ""},
+        local_village_tvk_num: {value: ""},
+        urns: [{type: "Стаціонарна скринька", number: ""},
+            {type: "Стаціонарна скринька", number: ""},
+            {type: "Переносна скринька", number: ""},
+            {type: "Переносна скринька", number: ""}
+        ]
+    };
+
+
     export default {
         name: 'app',
         data: function () {
@@ -485,20 +520,29 @@
             Prot
             , Law
             , About
+            , CandSett
         },
 
         methods: {
+            removeCandidates: function (electType) {
+                this[electType].dynamic_fields.cand.splice(0);
+                this[electType].dynamic_fields.cand.push({name: ""}, {name: ""}, {name: ""});
+            },
+
             switchPage: function (currPage) {
                 this.component = currPage;
             },
-            getSettVal: function (arg) {
-                if (arg.id) {
-                    this.common[arg.id].value = arg.val;
-                }
-            },
+            remove_alldata: function () {
+                old_data.common = init_common;
+                localStorage.clear();
+                location.reload();
+            }
+            ,
+
             elect: function (electionType) {
                 return this.electionTypes.indexOf(electionType) != -1;
-            },
+            }
+            ,
 
             change_urn: function (i, urn) {
                 for (let k = 0; k < this.parl_major.dynamic_fields.urns.length; k++) {
@@ -518,7 +562,8 @@
                 this.common.urns.splice(i, 1);
                 this.parl_party.dynamic_fields.urns.splice(i, 1);
                 this.parl_major.dynamic_fields.urns.splice(i, 1);
-            },
+            }
+            ,
             add_urn: function (urntype) {
                 this.common.urns.push({type: urntype, number: ""});
                 this.parl_major.dynamic_fields.urns.push({bulletin: "", type: urntype, number: ""});
@@ -538,6 +583,8 @@
                     type: this.common.urns[i].type,
                     number: this.common.urns[i].number
                 });
+
+
             }
 
             this.$nextTick(function () {
@@ -553,6 +600,7 @@
                         } else {
                             $(this.$node).parent().addClass('is-dirty');
                             dt.value = $(this.$node).val();
+
                         }
                     }
                 })
@@ -565,8 +613,6 @@
                 handler: function (val, oldVal) {
                     old_data.electionTypes = JSON.stringify(val);
                     localStorage.dvk_protokol = JSON.stringify(old_data);
-
-                    $('.ovonum').addClass('id-dirty');
                 },
                 deep: true
             },
@@ -579,7 +625,7 @@
             },
             'parl_major': {
                 handler: function (val, oldVal) {
-                    old_data.parl_major = JSON.stringify(val.dynamic_fields.candidates);
+                    old_data.parl_major = JSON.stringify(val.dynamic_fields.cand);
                     old_data.type_parl_major = JSON.stringify(val.type);
                     localStorage.dvk_protokol = JSON.stringify(old_data);
                 },
@@ -587,7 +633,7 @@
             },
             'parl_party': {
                 handler: function (val, oldVal) {
-                    old_data.parl_party = JSON.stringify(val.dynamic_fields.candidates);
+                    old_data.parl_party = JSON.stringify(val.dynamic_fields.cand);
                     old_data.type_parl_party = JSON.stringify(val.type);
                     localStorage.dvk_protokol = JSON.stringify(old_data);
                 },
@@ -595,7 +641,7 @@
             },
             'local_region': {
                 handler: function (val, oldVal) {
-                    old_data.local_region = JSON.stringify(val.dynamic_fields.candidates);
+                    old_data.local_region = JSON.stringify(val.dynamic_fields.cand);
                     old_data.type_local_region = JSON.stringify(val.type);
                     localStorage.dvk_protokol = JSON.stringify(old_data);
                 },
@@ -603,7 +649,7 @@
             },
             'local_district': {
                 handler: function (val, oldVal) {
-                    old_data.local_district = JSON.stringify(val.dynamic_fields.candidates);
+                    old_data.local_district = JSON.stringify(val.dynamic_fields.cand);
                     old_data.type_local_district = JSON.stringify(val.type);
                     localStorage.dvk_protokol = JSON.stringify(old_data);
                 },
@@ -611,7 +657,7 @@
             },
             'local_city': {
                 handler: function (val, oldVal) {
-                    old_data.local_city = JSON.stringify(val.dynamic_fields.candidates);
+                    old_data.local_city = JSON.stringify(val.dynamic_fields.cand);
                     old_data.type_local_city = JSON.stringify(val.type);
                     localStorage.dvk_protokol = JSON.stringify(old_data);
                 },
@@ -619,7 +665,7 @@
             },
             'local_mayor': {
                 handler: function (val, oldVal) {
-                    old_data.local_mayor = JSON.stringify(val.dynamic_fields.candidates);
+                    old_data.local_mayor = JSON.stringify(val.dynamic_fields.cand);
                     old_data.type_local_mayor = JSON.stringify(val.type);
                     localStorage.dvk_protokol = JSON.stringify(old_data);
                 },
@@ -627,7 +673,7 @@
             },
             'local_village': {
                 handler: function (val, oldVal) {
-                    old_data.local_village = JSON.stringify(val.dynamic_fields.candidates);
+                    old_data.local_village = JSON.stringify(val.dynamic_fields.cand);
                     old_data.type_local_village = JSON.stringify(val.type);
                     localStorage.dvk_protokol = JSON.stringify(old_data);
                 },
@@ -635,7 +681,7 @@
             },
             'local_elderman': {
                 handler: function (val, oldVal) {
-                    old_data.local_elderman = JSON.stringify(val.dynamic_fields.candidates);
+                    old_data.local_elderman = JSON.stringify(val.dynamic_fields.cand);
                     old_data.type_local_elderman = JSON.stringify(val.type);
                     localStorage.dvk_protokol = JSON.stringify(old_data);
                 },
@@ -647,20 +693,20 @@
     }
 
 
-    if (typeof localStorage.dvk_protokol == "undefined") {
+    if (typeof localStorage.dvk_protokol == "undefined"
+    ) {
         old_data = {};
     }
     else {
         old_data = JSON.parse(localStorage.dvk_protokol);
-        
+
         if (typeof old_data.electionTypes != "undefined") data.electionTypes = JSON.parse(old_data.electionTypes);
         if (typeof old_data.common != "undefined") data.common = JSON.parse(old_data.common);
 
 
-
         for (let i in electionsOrder) {
             if (typeof old_data[electionsOrder[i]] != "undefined") {
-                data[electionsOrder[i]].dynamic_fields.candidates = JSON.parse(old_data[electionsOrder[i]]);
+                data[electionsOrder[i]].dynamic_fields.cand = JSON.parse(old_data[electionsOrder[i]]);
             }
             if (typeof old_data[('type_' + electionsOrder[i])] != "undefined") {
                 data[electionsOrder[i]].type = JSON.parse(old_data[('type_' + electionsOrder[i])]);

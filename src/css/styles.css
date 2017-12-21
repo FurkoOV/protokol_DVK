@@ -1,6 +1,11 @@
-/*div {*/
-    /*border: solid red 1px;*/
-/*}*/
+.mdl-grid{
+    border: 1px solid red;
+}
+
+.mdl-textfield{
+    border:1px solid blue;
+}
+
 
 html, body {
     font-family: 'Roboto', 'Helvetica', sans-serif;
@@ -37,7 +42,7 @@ html, body {
 
 .my-drawer .my-navigation {
     z-index: -2;
-    /*border: 1px solid red;*/
+
 }
 
 
@@ -109,14 +114,6 @@ html, body {
     max-width: 99%;
 }
 
-.mdl-grid{
-    border: 1px solid red;
-}
-
-
-.mdl-textfield{
-    border:1px solid blue;
-}
 
 .ovonum {
     width: 100% !important;
@@ -134,3 +131,13 @@ td {
 .rem_cand, .rem_urn {
     cursor: pointer;
 }
+
+.is-full-width{width:100%}
+
+.center-items{ text-align: center !important;}
+
+.cellbuttop{ padding-top: 15px }
+.cellbutbot{ padding-bottom: 15px }
+
+
+
