@@ -494,7 +494,6 @@
     };
 
 
-
     export default {
         name: 'app',
         data: function () {

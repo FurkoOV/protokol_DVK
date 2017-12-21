@@ -42,7 +42,7 @@ function showDialog(options) {
     var content = dialog.find('.mdl-card');
     if (options.contentStyle != null) content.css(options.contentStyle);
     if (options.title != null) {
-        $('<h5>' + options.title + '</h5>').appendTo(content);
+        $('<h5>' + options.title + '</h5><hr>').appendTo(content);
     }
     if (options.text != null) {
         $('<p>' + options.text + '</p>').appendTo(content);
