@@ -5,7 +5,6 @@
                 <span class="mdl-layout-title">Перевірка протоколу</span>
                 <div class="mdl-layout-spacer"></div>
                 <a class="mdl-button" href="javascript:window.close()"><i class="material-icons">input</i> Вихід</a>
-                z
             </div>
         </header>
         <div class="my-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
